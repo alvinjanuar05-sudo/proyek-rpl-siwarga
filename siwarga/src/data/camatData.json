@@ -1,0 +1,21 @@
+{
+  "profile": {
+    "nama": "Drs. H. Ahmad Subagja, M.Si",
+    "nip": "19780512 200312 1 002",
+    "jabatan": "Camat Kecamatan Maju Bersama",
+    "wilayah": "Kecamatan Maju Bersama",
+    "foto": "https://via.placeholder.com/150"
+  },
+  "stats": {
+    "totalPenduduk": 16050,
+    "totalDesa": 4,
+    "pengajuanSurat": 43,
+    "laporanPengaduan": 128
+  },
+  "desaList": [
+    { "id": "1", "namaDesa": "Desa Sukamaju", "populasi": 4250, "suratPending": 12, "status": "Aktif" },
+    { "id": "2", "namaDesa": "Desa Harapan Jaya", "populasi": 3800, "suratPending": 5, "status": "Aktif" },
+    { "id": "3", "namaDesa": "Desa Mekar Sari", "populasi": 5100, "suratPending": 24, "status": "Perlu Tinjauan" },
+    { "id": "4", "namaDesa": "Desa Ciomas", "populasi": 2900, "suratPending": 2, "status": "Aktif" }
+  ]
+}

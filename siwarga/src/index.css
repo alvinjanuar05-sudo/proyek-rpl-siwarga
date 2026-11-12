@@ -1,0 +1,46 @@
+/* 1. Masukin Tailwind dulu biar class utility-nya jalan */
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Product Sans';
+  src: url('./assets/fonts/product-sans/ProductSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Hilangkan scrollbar untuk semua browser (Chrome, Safari, Firefox, Edge) */
+html, body {
+  overflow-x: hidden;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE & Edge */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari & Opera */
+}
+
+/* Terapkan Product Sans ke seluruh elemen web secara konsisten */
+body {
+  font-family: 'Product Sans', sans-serif !important;
+  margin: 0;
+  padding: 0;
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+/* Root dibuat full layar */
+#root {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Product Sans', sans-serif;
+}

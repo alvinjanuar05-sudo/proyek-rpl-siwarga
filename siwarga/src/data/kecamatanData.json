@@ -1,0 +1,619 @@
+{
+  "id_kecamatan": "KEC001",
+  "nama_kabupaten": "Kabupaten Cirebon",
+  "nama_kecamatan": "Kecamatan Sukamaju",
+  "logo_kabupaten": "https://placehold.co/43x45",
+  "profil_kecamatan": {
+    "deskripsi": "Pusat pelayanan publik terintegrasi dan tata kelola pemerintahan Kecamatan Sukamaju.",
+    "alamat_kantor": "Jl. Raya Sukamaju No. 01, Kab. Cirebon",
+    "telepon_kantor": "0231-700001",
+    "email_resmi": "kecamatan.sukamaju@cirebonkab.go.id",
+    "jam_pelayanan": "Senin - Jumat (08:00 - 15:30 WIB)",
+    "website": "https://sukamaju.cirebonkab.go.id"
+  },
+  "camat": {
+    "nama": "Hendra Gunawan, S.STP., M.Si",
+    "nip": "19780512 200312 1 002",
+    "jabatan": "Camat Sukamaju",
+    "foto": "https://placehold.co/150",
+    "periode": "2024 - 2029",
+    "status": "Aktif"
+  },
+  "layanan": [
+    {
+      "id_layanan": "LAY001",
+      "nama_layanan": "Rekomendasi Surat Keterangan Tidak Mampu (SKTM)",
+      "persyaratan": ["Surat Pengantar RT/RW", "Fotokopi KTP", "Fotokopi Kartu Keluarga"],
+      "prosedur": "Pengajuan diajukan melalui Kantor Desa, diverifikasi di Kecamatan",
+      "jam_layanan": "08:00 - 14:00 WIB",
+      "status": "Aktif"
+    },
+    {
+      "id_layanan": "LAY002",
+      "nama_layanan": "Pengurusan Surat Pindah Domisili",
+      "persyaratan": ["Surat Pengantar Desa", "KTP Asli", "Kartu Keluarga Asli"],
+      "prosedur": "Datang ke Kantor Kecamatan membawa berkas pengantar dari Desa",
+      "jam_layanan": "08:00 - 15:00 WIB",
+      "status": "Aktif"
+    }
+  ],
+  "pengumuman": [
+    {
+      "id_pengumuman": "PGM001",
+      "judul": "Pelayanan KTP Elektronik & Adminduk Keliling Desa",
+      "tanggal": "2026-08-25",
+      "isi": "Pelayanan perekaman KTP-el akan dilaksanakan di Aula Desa Sukamaju mulai pukul 09:00 WIB.",
+      "status": "Dipublikasikan"
+    }
+  ],
+  "pengaduan": [
+    {
+      "id_pengaduan": "ADU001",
+      "nama_pelapor": "Budi Santoso",
+      "desa": "Desa Sukamaju",
+      "topik": "Jalan Rusak Akses Desa",
+      "status": "Diproses",
+      "tanggal": "2026-08-18"
+    }
+  ],
+  "pending_verifikasi": [
+    {
+      "id_pengajuan": "VER001",
+      "desa_pengaju": "Desa Sukamaju",
+      "jenis_perubahan": "Pergantian Ketua RW 01",
+      "data_lama": "Rahmat Hidayat",
+      "data_baru": "Syaiful Bahri",
+      "status": "Menunggu Verifikasi"
+    }
+  ],
+  "audit_log": [
+    {
+      "timestamp": "2026-08-20 09:15:00",
+      "akun": "Admin Kecamatan",
+      "aktivitas": "Update Logo Regional Kabupaten",
+      "status": "Berhasil"
+    }
+  ],
+  "desa_kelurahan": [
+    {
+      "id_desa": "DESA001",
+      "nama_desa_kelurahan": "Desa Sukamaju",
+      "nama_kepala_desa_lurah": "Dedi Kurniawan",
+      "nomor_kontak": "0812-7000-0001",
+      "rw": [
+        {
+          "id_rw": "RW001",
+          "rw": "01",
+          "nama_ketua_rw": "Rahmat Hidayat",
+          "nomor_hp_ketua_rw": "0813-8000-0001",
+          "rt": [
+            {
+              "id_rt": "RT001",
+              "rt": "001",
+              "nama_ketua_rt": "Maman Suherman",
+              "nomor_hp_ketua_rt": "0821-9000-0001"
+            },
+            {
+              "id_rt": "RT002",
+              "rt": "002",
+              "nama_ketua_rt": "Dimas Pratama",
+              "nomor_hp_ketua_rt": "0821-9000-0002"
+            },
+            {
+              "id_rt": "RT003",
+              "rt": "003",
+              "nama_ketua_rt": "Ari Setiawan",
+              "nomor_hp_ketua_rt": "0821-9000-0003"
+            }
+          ]
+        },
+        {
+          "id_rw": "RW002",
+          "rw": "02",
+          "nama_ketua_rw": "Suhendar",
+          "nomor_hp_ketua_rw": "0813-8000-0002",
+          "rt": [
+            {
+              "id_rt": "RT004",
+              "rt": "001",
+              "nama_ketua_rt": "Gilang Ramadhan",
+              "nomor_hp_ketua_rt": "0821-9000-0004"
+            },
+            {
+              "id_rt": "RT005",
+              "rt": "002",
+              "nama_ketua_rt": "Rian Permana",
+              "nomor_hp_ketua_rt": "0821-9000-0005"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id_desa": "DESA002",
+      "nama_desa_kelurahan": "Desa Mekarsari",
+      "nama_kepala_desa_lurah": "Rina Marlina",
+      "nomor_kontak": "0812-7000-0002",
+      "rw": [
+        {
+          "id_rw": "RW003",
+          "rw": "01",
+          "nama_ketua_rw": "Iwan Setiawan",
+          "nomor_hp_ketua_rw": "0813-8000-0003",
+          "rt": [
+            {
+              "id_rt": "RT006",
+              "rt": "001",
+              "nama_ketua_rt": "Ilham Fauzi",
+              "nomor_hp_ketua_rt": "0821-9000-0006"
+            },
+            {
+              "id_rt": "RT007",
+              "rt": "002",
+              "nama_ketua_rt": "Budi Santoso",
+              "nomor_hp_ketua_rt": "0821-9000-0007"
+            }
+          ]
+        },
+        {
+          "id_rw": "RW004",
+          "rw": "02",
+          "nama_ketua_rw": "Dadan Ramdani",
+          "nomor_hp_ketua_rw": "0813-8000-0004",
+          "rt": [
+            {
+              "id_rt": "RT008",
+              "rt": "001",
+              "nama_ketua_rt": "Rangga Saputra",
+              "nomor_hp_ketua_rt": "0821-9000-0008"
+            },
+            {
+              "id_rt": "RT009",
+              "rt": "002",
+              "nama_ketua_rt": "Wahyu Hidayat",
+              "nomor_hp_ketua_rt": "0821-9000-0009"
+            },
+            {
+              "id_rt": "RT010",
+              "rt": "003",
+              "nama_ketua_rt": "Nandang Koswara",
+              "nomor_hp_ketua_rt": "0821-9000-0010"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id_desa": "DESA003",
+      "nama_desa_kelurahan": "Desa Jatirasa",
+      "nama_kepala_desa_lurah": "Asep Saepudin",
+      "nomor_kontak": "0812-7000-0003",
+      "rw": [
+        {
+          "id_rw": "RW005",
+          "rw": "01",
+          "nama_ketua_rw": "Usep Kurnia",
+          "nomor_hp_ketua_rw": "0813-8000-0005",
+          "rt": [
+            {
+              "id_rt": "RT011",
+              "rt": "001",
+              "nama_ketua_rt": "Fikri Maulana",
+              "nomor_hp_ketua_rt": "0821-9000-0011"
+            },
+            {
+              "id_rt": "RT012",
+              "rt": "002",
+              "nama_ketua_rt": "Rizky Firmansyah",
+              "nomor_hp_ketua_rt": "0821-9000-0012"
+            },
+            {
+              "id_rt": "RT013",
+              "rt": "003",
+              "nama_ketua_rt": "Andi Saputra",
+              "nomor_hp_ketua_rt": "0821-9000-0013"
+            }
+          ]
+        },
+        {
+          "id_rw": "RW006",
+          "rw": "02",
+          "nama_ketua_rw": "Asep Mulyana",
+          "nomor_hp_ketua_rw": "0813-8000-0006",
+          "rt": [
+            {
+              "id_rt": "RT014",
+              "rt": "001",
+              "nama_ketua_rt": "Hendra Permana",
+              "nomor_hp_ketua_rt": "0821-9000-0014"
+            },
+            {
+              "id_rt": "RT015",
+              "rt": "002",
+              "nama_ketua_rt": "Yusuf Kurnia",
+              "nomor_hp_ketua_rt": "0821-9000-0015"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id_desa": "DESA004",
+      "nama_desa_kelurahan": "Desa Karangmulya",
+      "nama_kepala_desa_lurah": "Yudi Hartono",
+      "nomor_kontak": "0812-7000-0004",
+      "rw": [
+        {
+          "id_rw": "RW007",
+          "rw": "01",
+          "nama_ketua_rw": "Rudi Hermawan",
+          "nomor_hp_ketua_rw": "0813-8000-0007",
+          "rt": [
+            {
+              "id_rt": "RT016",
+              "rt": "001",
+              "nama_ketua_rt": "Fauzan Ramadhan",
+              "nomor_hp_ketua_rt": "0821-9000-0016"
+            },
+            {
+              "id_rt": "RT017",
+              "rt": "002",
+              "nama_ketua_rt": "Doni Setiawan",
+              "nomor_hp_ketua_rt": "0821-9000-0017"
+            }
+          ]
+        },
+        {
+          "id_rw": "RW008",
+          "rw": "02",
+          "nama_ketua_rw": "Eko Prasetyo",
+          "nomor_hp_ketua_rw": "0813-8000-0008",
+          "rt": [
+            {
+              "id_rt": "RT018",
+              "rt": "001",
+              "nama_ketua_rt": "Raka Hidayat",
+              "nomor_hp_ketua_rt": "0821-9000-0018"
+            },
+            {
+              "id_rt": "RT019",
+              "rt": "002",
+              "nama_ketua_rt": "Aldi Nugraha",
+              "nomor_hp_ketua_rt": "0821-9000-0019"
+            },
+            {
+              "id_rt": "RT020",
+              "rt": "003",
+              "nama_ketua_rt": "Bayu Pratama",
+              "nomor_hp_ketua_rt": "0821-9000-0020"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id_desa": "DESA005",
+      "nama_desa_kelurahan": "Desa Sumberjaya",
+      "nama_kepala_desa_lurah": "Siti Nurhayati",
+      "nomor_kontak": "0812-7000-0005",
+      "rw": [
+        {
+          "id_rw": "RW009",
+          "rw": "01",
+          "nama_ketua_rw": "Jajang Nurjaman",
+          "nomor_hp_ketua_rw": "0813-8000-0009",
+          "rt": [
+            {
+              "id_rt": "RT021",
+              "rt": "001",
+              "nama_ketua_rt": "Rian Haryanto",
+              "nomor_hp_ketua_rt": "0821-9000-0021"
+            },
+            {
+              "id_rt": "RT022",
+              "rt": "002",
+              "nama_ketua_rt": "Dedi Firmansyah",
+              "nomor_hp_ketua_rt": "0821-9000-0022"
+            },
+            {
+              "id_rt": "RT023",
+              "rt": "003",
+              "nama_ketua_rt": "Galih Ramadhan",
+              "nomor_hp_ketua_rt": "0821-9000-0023"
+            }
+          ]
+        },
+        {
+          "id_rw": "RW010",
+          "rw": "02",
+          "nama_ketua_rw": "Fajar Nugraha",
+          "nomor_hp_ketua_rw": "0813-8000-0010",
+          "rt": [
+            {
+              "id_rt": "RT024",
+              "rt": "001",
+              "nama_ketua_rt": "Fajar Setiawan",
+              "nomor_hp_ketua_rt": "0821-9000-0024"
+            },
+            {
+              "id_rt": "RT025",
+              "rt": "002",
+              "nama_ketua_rt": "Niko Saputra",
+              "nomor_hp_ketua_rt": "0821-9000-0025"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id_desa": "DESA006",
+      "nama_desa_kelurahan": "Desa Harapanjaya",
+      "nama_kepala_desa_lurah": "Agus Setiawan",
+      "nomor_kontak": "0812-7000-0006",
+      "rw": [
+        {
+          "id_rw": "RW011",
+          "rw": "01",
+          "nama_ketua_rw": "Wawan Gunawan",
+          "nomor_hp_ketua_rw": "0813-8000-0011",
+          "rt": [
+            {
+              "id_rt": "RT026",
+              "rt": "001",
+              "nama_ketua_rt": "Rendi Hidayat",
+              "nomor_hp_ketua_rt": "0821-9000-0026"
+            },
+            {
+              "id_rt": "RT027",
+              "rt": "002",
+              "nama_ketua_rt": "Sandi Kurniawan",
+              "nomor_hp_ketua_rt": "0821-9000-0027"
+            }
+          ]
+        },
+        {
+          "id_rw": "RW012",
+          "rw": "02",
+          "nama_ketua_rw": "Teguh Santoso",
+          "nomor_hp_ketua_rw": "0813-8000-0012",
+          "rt": [
+            {
+              "id_rt": "RT028",
+              "rt": "001",
+              "nama_ketua_rt": "Yoga Pratama",
+              "nomor_hp_ketua_rt": "0821-9000-0028"
+            },
+            {
+              "id_rt": "RT029",
+              "rt": "002",
+              "nama_ketua_rt": "Dika Firmansyah",
+              "nomor_hp_ketua_rt": "0821-9000-0029"
+            },
+            {
+              "id_rt": "RT030",
+              "rt": "003",
+              "nama_ketua_rt": "Arman Setiawan",
+              "nomor_hp_ketua_rt": "0821-9000-0030"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id_desa": "DESA007",
+      "nama_desa_kelurahan": "Desa Mulyasari",
+      "nama_kepala_desa_lurah": "Taufik Hidayat",
+      "nomor_kontak": "0812-7000-0007",
+      "rw": [
+        {
+          "id_rw": "RW013",
+          "rw": "01",
+          "nama_ketua_rw": "Cecep Supriadi",
+          "nomor_hp_ketua_rw": "0813-8000-0013",
+          "rt": [
+            {
+              "id_rt": "RT031",
+              "rt": "001",
+              "nama_ketua_rt": "Rizal Haryanto",
+              "nomor_hp_ketua_rt": "0821-9000-0031"
+            },
+            {
+              "id_rt": "RT032",
+              "rt": "002",
+              "nama_ketua_rt": "Ilham Nugroho",
+              "nomor_hp_ketua_rt": "0821-9000-0032"
+            },
+            {
+              "id_rt": "RT033",
+              "rt": "003",
+              "nama_ketua_rt": "Tio Saputra",
+              "nomor_hp_ketua_rt": "0821-9000-0033"
+            }
+          ]
+        },
+        {
+          "id_rw": "RW014",
+          "rw": "02",
+          "nama_ketua_rw": "Deni Kurnia",
+          "nomor_hp_ketua_rw": "0813-8000-0014",
+          "rt": [
+            {
+              "id_rt": "RT034",
+              "rt": "001",
+              "nama_ketua_rt": "Farhan Hidayat",
+              "nomor_hp_ketua_rt": "0821-9000-0034"
+            },
+            {
+              "id_rt": "RT035",
+              "rt": "002",
+              "nama_ketua_rt": "Adit Kurniawan",
+              "nomor_hp_ketua_rt": "0821-9000-0035"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id_desa": "DESA008",
+      "nama_desa_kelurahan": "Desa Kertamukti",
+      "nama_kepala_desa_lurah": "Dian Permata",
+      "nomor_kontak": "0812-7000-0008",
+      "rw": [
+        {
+          "id_rw": "RW015",
+          "rw": "01",
+          "nama_ketua_rw": "Agung Firmansyah",
+          "nomor_hp_ketua_rw": "0813-8000-0015",
+          "rt": [
+            {
+              "id_rt": "RT036",
+              "rt": "001",
+              "nama_ketua_rt": "Bagas Pratama",
+              "nomor_hp_ketua_rt": "0821-9000-0036"
+            },
+            {
+              "id_rt": "RT037",
+              "rt": "002",
+              "nama_ketua_rt": "Kevin Setiawan",
+              "nomor_hp_ketua_rt": "0821-9000-0037"
+            }
+          ]
+        },
+        {
+          "id_rw": "RW016",
+          "rw": "02",
+          "nama_ketua_rw": "Rizal Maulana",
+          "nomor_hp_ketua_rw": "0813-8000-0016",
+          "rt": [
+            {
+              "id_rt": "RT038",
+              "rt": "001",
+              "nama_ketua_rt": "Raka Firmansyah",
+              "nomor_hp_ketua_rt": "0821-9000-0038"
+            },
+            {
+              "id_rt": "RT039",
+              "rt": "002",
+              "nama_ketua_rt": "Dimas Haryanto",
+              "nomor_hp_ketua_rt": "0821-9000-0039"
+            },
+            {
+              "id_rt": "RT040",
+              "rt": "003",
+              "nama_ketua_rt": "Fauzi Nugraha",
+              "nomor_hp_ketua_rt": "0821-9000-0040"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id_desa": "DESA009",
+      "nama_desa_kelurahan": "Desa Sindangjaya",
+      "nama_kepala_desa_lurah": "Bambang Irawan",
+      "nomor_kontak": "0812-7000-0009",
+      "rw": [
+        {
+          "id_rw": "RW017",
+          "rw": "01",
+          "nama_ketua_rw": "Yayan Suryana",
+          "nomor_hp_ketua_rw": "0813-8000-0017",
+          "rt": [
+            {
+              "id_rt": "RT041",
+              "rt": "001",
+              "nama_ketua_rt": "Rendy Saputra",
+              "nomor_hp_ketua_rt": "0821-9000-0041"
+            },
+            {
+              "id_rt": "RT042",
+              "rt": "002",
+              "nama_ketua_rt": "Iqbal Hidayat",
+              "nomor_hp_ketua_rt": "0821-9000-0042"
+            },
+            {
+              "id_rt": "RT043",
+              "rt": "003",
+              "nama_ketua_rt": "Surya Kurniawan",
+              "nomor_hp_ketua_rt": "0821-9000-0043"
+            }
+          ]
+        },
+        {
+          "id_rw": "RW018",
+          "rw": "02",
+          "nama_ketua_rw": "Heri Kurniawan",
+          "nomor_hp_ketua_rw": "0813-8000-0018",
+          "rt": [
+            {
+              "id_rt": "RT044",
+              "rt": "001",
+              "nama_ketua_rt": "Fikri Pratama",
+              "nomor_hp_ketua_rt": "0821-9000-0044"
+            },
+            {
+              "id_rt": "RT045",
+              "rt": "002",
+              "nama_ketua_rt": "Danu Setiawan",
+              "nomor_hp_ketua_rt": "0821-9000-0045"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id_desa": "DESA010",
+      "nama_desa_kelurahan": "Desa Cibadak",
+      "nama_kepala_desa_lurah": "Nia Kurniasih",
+      "nomor_kontak": "0812-7000-0010",
+      "rw": [
+        {
+          "id_rw": "RW019",
+          "rw": "01",
+          "nama_ketua_rw": "Dede Iskandar",
+          "nomor_hp_ketua_rw": "0813-8000-0019",
+          "rt": [
+            {
+              "id_rt": "RT046",
+              "rt": "001",
+              "nama_ketua_rt": "Gilang Haryanto",
+              "nomor_hp_ketua_rt": "0821-9000-0046"
+            },
+            {
+              "id_rt": "RT047",
+              "rt": "002",
+              "nama_ketua_rt": "Rafi Nugroho",
+              "nomor_hp_ketua_rt": "0821-9000-0047"
+            }
+          ]
+        },
+        {
+          "id_rw": "RW020",
+          "rw": "02",
+          "nama_ketua_rw": "Arif Rahman",
+          "nomor_hp_ketua_rw": "0813-8000-0020",
+          "rt": [
+            {
+              "id_rt": "RT048",
+              "rt": "001",
+              "nama_ketua_rt": "Alif Saputra",
+              "nomor_hp_ketua_rt": "0821-9000-0048"
+            },
+            {
+              "id_rt": "RT049",
+              "rt": "002",
+              "nama_ketua_rt": "Rizki Hidayat",
+              "nomor_hp_ketua_rt": "0821-9000-0049"
+            },
+            {
+              "id_rt": "RT050",
+              "rt": "003",
+              "nama_ketua_rt": "Daffa Kurniawan",
+              "nomor_hp_ketua_rt": "0821-9000-0050"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
