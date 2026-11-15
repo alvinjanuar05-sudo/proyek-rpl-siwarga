@@ -1,0 +1,20 @@
+{
+  "name": "proyek-rpl-siwarga",
+  "version": "1.0.0",
+  "description": "Sistem Informasi Pelayanan Administrasi Desa Terpadu & Asisten Virtual Publik Berbasis AI",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/*.test.js"
+  },
+  "keywords": [
+    "siwarga",
+    "svara",
+    "smart-village",
+    "e-government",
+    "gemini-ai",
+    "stmik-ikmi-cirebon"
+  ],
+  "author": "Muhammad Alvin Januar (NIM: 41257125)",
+  "license": "ISC"
+}
+
