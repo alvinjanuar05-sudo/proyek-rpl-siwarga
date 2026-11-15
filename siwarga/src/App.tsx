@@ -2,9 +2,14 @@ import { useEffect } from 'react';
 import { Routes, Route, useLocation, useNavigate, Navigate } from 'react-router-dom';
 import Navbar from './components/navbar/Navbar';
 import Hero from './components/hero/Hero';
+import LandingSections from './components/hero/LandingSections';
+import Footer from './layouts/Footer';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import ChatAI from './pages/ChatAI/ChatAI';
+import DesaPage from './pages/Desa/DesaPage';
+import WilayahPage from './pages/Wilayah/WilayahPage';
+import InformasiPage from './pages/Informasi/InformasiPage';
 
 // IMPORT KOMPONEN PROFILE DARI FOLDER COMPONENTS/CHAT
 import { Profile } from './components/chat/Profile';
@@ -20,6 +25,8 @@ const Home = () => {
     <div>
       <Navbar />
       <Hero />
+      <LandingSections />
+      <Footer />
     </div>
   );
 };
@@ -91,6 +98,42 @@ const AppContent = () => {
         <Route
           path="/beranda"
           element={isAdmin ? <Navigate to={adminTargetRoute} replace /> : <Home />}
+        />
+        <Route
+          path="/desa"
+          element={isAdmin ? <Navigate to={adminTargetRoute} replace /> : <DesaPage />}
+        />
+        <Route
+          path="/layanan/desa"
+          element={isAdmin ? <Navigate to={adminTargetRoute} replace /> : <DesaPage />}
+        />
+        <Route
+          path="/wilayah"
+          element={isAdmin ? <Navigate to={adminTargetRoute} replace /> : <WilayahPage />}
+        />
+        <Route
+          path="/informasi/wilayah"
+          element={isAdmin ? <Navigate to={adminTargetRoute} replace /> : <WilayahPage />}
+        />
+        <Route
+          path="/layanan/pengaduan"
+          element={isAdmin ? <Navigate to={adminTargetRoute} replace /> : <InformasiPage />}
+        />
+        <Route
+          path="/layanan/status-pengaduan"
+          element={isAdmin ? <Navigate to={adminTargetRoute} replace /> : <InformasiPage />}
+        />
+        <Route
+          path="/informasi/berita"
+          element={isAdmin ? <Navigate to={adminTargetRoute} replace /> : <InformasiPage />}
+        />
+        <Route
+          path="/informasi/panduan"
+          element={isAdmin ? <Navigate to={adminTargetRoute} replace /> : <InformasiPage />}
+        />
+        <Route
+          path="/informasi/tentang"
+          element={isAdmin ? <Navigate to={adminTargetRoute} replace /> : <InformasiPage />}
         />
         <Route
           path="/login"
