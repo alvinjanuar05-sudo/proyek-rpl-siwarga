@@ -7,49 +7,41 @@ on:
     branches: [ main ]
 
 jobs:
-  backend-test:
-    name: Backend Unit Testing (Node.js 20)
+  ci-pipeline:
+    name: Automated Testing, Typecheck & Production Build
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: siwarga-backend
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js 20
+      - name: Setup Node.js v20
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
-          cache-dependency-path: siwarga-backend/package-lock.json
+          cache-dependency-path: |
+            siwarga-backend/package-lock.json
+            siwarga/package-lock.json
 
-      - name: Install Dependencies
-        run: npm install
+      - name: Install Backend Dependencies
+        run: |
+          cd siwarga-backend
+          npm install
 
-      - name: Run Backend Unit Tests
+      - name: Run Backend Internal Tests
+        run: |
+          cd siwarga-backend
+          npm test
+
+      - name: Run Root Automated Unit & Architecture Tests
         run: npm test
 
-  frontend-build:
-    name: Frontend Build & Typecheck (Vite + React)
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: siwarga
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+      - name: Install Frontend Dependencies
+        run: |
+          cd siwarga
+          npm install
 
-      - name: Setup Node.js 20
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: 'npm'
-          cache-dependency-path: siwarga/package-lock.json
-
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Run Frontend Build
-        run: npm run build
-
+      - name: Build & Typecheck Frontend (Vite + TypeScript)
+        run: |
+          cd siwarga
+          npm run build
