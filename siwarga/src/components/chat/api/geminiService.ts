@@ -17,9 +17,11 @@ export const callGeminiWithFailover = async (
 
   const keyQueue: { key: string; model: string }[] = [];
 
+  const validGeminiModels = ['gemini-2.5-flash', 'gemini-2.5-flash-lite', 'gemini-flash-latest', 'gemini-2.5-pro'];
+
   const sanitizeModel = (m?: string): string => {
-    if (!m || m.includes('2.0') || m.includes('1.5')) {
-      return 'gemini-3.7-flash';
+    if (!m || m.includes('1.5') || m.includes('2.0') || !validGeminiModels.includes(m)) {
+      return 'gemini-2.5-flash';
     }
     return m;
   };
@@ -40,7 +42,7 @@ export const callGeminiWithFailover = async (
     });
   }
   if (envApiKey && envApiKey.trim() && !keyQueue.some((k) => k.key === envApiKey.trim())) {
-    keyQueue.push({ key: envApiKey.trim(), model: 'gemini-3.7-flash' });
+    keyQueue.push({ key: envApiKey.trim(), model: 'gemini-2.5-flash' });
   }
 
   const staticFallback =
@@ -53,7 +55,9 @@ export const callGeminiWithFailover = async (
 
   const basePrompt =
     savedConfig.systemPrompt ||
-    'Anda adalah Svara AI, asisten digital resmi pelayanan publik desa yang ramah dan pintar.';
+    `Anda adalah Svara AI, Asisten Digital Resmi Pelayanan Publik Desa yang ramah, komunikatif, cerdas, dan solutif.
+Tugas Anda adalah membantu warga terkait informasi dan administrasi desa (seperti syarat SKTM, SKU, Domisili, SKCK, KTP, KK, Akta, bansos/DTKS, jadwal kantor desa, pengumuman, dan aspirasi).
+Jawab pertanyaan seputar administrasi desa secara lengkap, terstruktur, ramah, dan solutif menggunakan standar administrasi desa di Indonesia tanpa menolak kaku.`;
 
   const systemInstructionText = `${basePrompt}\n\n${contextInfo}`.trim();
 
@@ -64,15 +68,11 @@ export const callGeminiWithFailover = async (
     // Daftar model aktif Google Gemini dengan auto-failover
     const modelsToTry = Array.from(
       new Set([
-        dashboardModel,
-        'gemini-3.7-flash',
-        'gemini-3.8-flash',
-        'gemini-3.6-flash',
-        'gemini-3.5-flash',
-        'gemini-3.5-flash-lite',
-        'gemini-3.1-flash-lite',
+        dashboardModel || 'gemini-2.5-flash',
+        'gemini-2.5-flash',
+        'gemini-2.5-flash-lite',
         'gemini-flash-latest',
-        'gemini-flash-lite-latest'
+        'gemini-2.5-pro'
       ])
     );
 
@@ -94,7 +94,7 @@ export const callGeminiWithFailover = async (
               ],
               generationConfig: {
                 temperature: savedConfig.temperature ?? 0.7,
-                maxOutputTokens: 1024,
+                maxOutputTokens: 2048,
               },
             }),
           }
@@ -106,7 +106,7 @@ export const callGeminiWithFailover = async (
           console.log(`✅ RESPONSE GEMINI SUKSES DENGAN MODEL [${modelName}]!`);
           return data.candidates[0].content.parts[0].text;
         } else {
-          console.warn(`⚠️ GEMINI API REJECTED (${modelName}):`, data);
+          console.error(`❌ GEMINI API REJECTED (${modelName}):`, data);
         }
       } catch (err) {
         console.error(`💥 KONEKSI API ERROR (${modelName}):`, err);

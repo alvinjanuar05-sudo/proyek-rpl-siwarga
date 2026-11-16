@@ -253,9 +253,31 @@ export const apiService = {
 
   // 8. Chatbot AI SVARA
   async sendAiChat(message: string, user: any, apiKey: string) {
+    let currentUserId = user?.id_user || user?.id || '';
+    let token = '';
+
+    try {
+      const storedUser = localStorage.getItem('user');
+      if (storedUser) {
+        const parsed = JSON.parse(storedUser);
+        if (!currentUserId) {
+          currentUserId = parsed.id_user || parsed.id || '';
+        }
+        token = parsed.token || localStorage.getItem('token') || '';
+      }
+    } catch {
+      // ignore JSON parse error
+    }
+
+    const effectiveUserId = String(user?.id || user?.id_user || currentUserId || '');
+
     const response = await fetch(`${BASE_URL}/chat`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 
+        'Content-Type': 'application/json',
+        'x-user-id': effectiveUserId,
+        'authorization': token ? `Bearer ${token}` : effectiveUserId,
+      },
       body: JSON.stringify({ message, user, apiKey }),
     });
     return await response.json();

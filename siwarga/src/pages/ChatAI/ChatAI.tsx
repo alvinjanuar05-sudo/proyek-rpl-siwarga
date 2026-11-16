@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 
 import logoIcon from '../../assets/icon_navbar/Logo.svg';
+import logoDesa from '../../assets/icon_navbar/Logo.svg';
 import iconEnter from '../../assets/icon_chat/icon_enter.svg';
 
 import { useKecamatan } from '../../context/KecamatanContext';
@@ -633,7 +634,8 @@ const ChatAI: React.FC<ChatAIProps> = ({ isFullScreen = true, role = 'warga' }) 
               ) : (
                 <img
                   className="w-8 h-9 md:w-10 md:h-11 object-contain rounded-md border p-0.5 bg-white shadow-2xs"
-                  src={dataKecamatan?.logo_kabupaten || 'https://placehold.co/43x45'}
+                  src={dataKecamatan?.logo_kabupaten && !dataKecamatan.logo_kabupaten.includes('placehold.co') ? dataKecamatan.logo_kabupaten : logoDesa}
+                  onError={(e) => { e.currentTarget.src = logoDesa; }}
                   alt="Logo Kabupaten"
                 />
               )}

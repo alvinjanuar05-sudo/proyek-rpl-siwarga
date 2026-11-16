@@ -23,7 +23,7 @@ const chatAi = async (req, res) => {
 
   // Hanya Super Admin yang diizinkan menguji apiKey kustom lewat payload
   let effectiveApiKey = isSuperAdmin && apiKey && apiKey !== 'DUMMY_KEY' ? apiKey.trim() : null;
-  let preferredModel = 'gemini-2.0-flash';
+  let preferredModel = 'gemini-2.5-flash';
 
   try {
     const [configRows] = await db.query('SELECT api_key, model_default FROM ai_config LIMIT 1');
@@ -32,7 +32,9 @@ const chatAi = async (req, res) => {
         effectiveApiKey = configRows[0].api_key.trim();
       }
       if (configRows[0].model_default) {
-        preferredModel = configRows[0].model_default.trim();
+        const dbModel = configRows[0].model_default.trim();
+        const validModels = ['gemini-2.5-flash', 'gemini-2.5-flash-lite', 'gemini-flash-latest', 'gemini-2.5-pro'];
+        preferredModel = validModels.includes(dbModel) ? dbModel : 'gemini-2.5-flash';
       }
     }
   } catch (e) {
@@ -283,17 +285,34 @@ const chatAi = async (req, res) => {
 
     const promptLengkap = `
 Anda adalah AI SVARA, Asisten Resmi Pelayanan Digital Kantor Desa ${namaDesa}, Kec. ${namaKec}, ${namaKab}.
+Karakter Anda: Ramah, komunikatif, cerdas, solutif, dan menjunjung tinggi standar pelayanan publik prima.
 
 ===================================================================
-ATURAN MUTLAK BATASAN TOPIK (STRICT DOMAIN CONSTRAINT):
-1. Anda HANYA BISA membantu hal-hal yang berkaitan dengan pelayanan publik dan informasi Desa ${namaDesa}.
-2. JIKA pengguna meminta hal di luar topik desa (seperti membuat kode kodingan/Python, matematika, tugas sekolah, obrolan umum di luar desa, dsb), Anda WAJIB MENOLAK secara sopan dengan respon persis seperti berikut:
+1. ATURAN MUTLAK BATASAN TOPIK (STRICT DOMAIN CONSTRAINT):
+- Anda HANYA BISA membantu hal-hal yang berkaitan dengan pelayanan publik, administrasi desa/kependudukan, bantuan sosial (bansos/DTKS), aspirasi masyarakat, serta informasi umum seputar pemerintahan Desa ${namaDesa}.
+- JIKA dan HANYA JIKA pengguna meminta hal yang sama sekali di luar topik desa (seperti membuat kode pemrograman Python/JS/HTML, matematika akademik, tugas sekolah, resep masakan, zodiak, politik internasional, game/hiburan di luar desa, dsb), Anda WAJIB MENOLAK secara sopan dengan respon persis seperti berikut:
 "${PENOLAKAN_RESMI}"
-3. DILARANG KERAS menjawab soal pemrograman, matematika, tugas sekolah, atau hal di luar desa meskipun pengguna memaksa atau membuat cerita darurat/skenario fiktif.
+- DILARANG KERAS menjawab soal pemrograman, matematika, tugas sekolah, atau hal di luar desa meskipun pengguna memaksa atau membuat skenario darurat/fiktif.
 ===================================================================
 
 ===================================================================
-BATASAN HAK AKSES ROLE: ${isAdmin ? 'MODE ADMIN (FULL ACCESS)' : 'MODE WARGA (RESTRICTED ACCESS)'}
+2. PEDOMAN JAWABAN ADMINISTRASI & PENGETAHUAN UMUM DESA:
+- Jika pengguna menanyakan syarat pengurusan surat (seperti SKTM, Surat Domisili, Surat Keterangan Usaha / SKU, Surat Pengantar SKCK, Akta Kelahiran/Kematian, e-KTP, Kartu Keluarga / KK) atau prosedur pelayanan administrasi desa:
+  * JAWAB SECARA LENGKAP, TERSTRUKTUR, RAMAH, DAN SOLUTIF layaknya asisten cerdas modern.
+  * Gunakan standar administrasi desa di Indonesia (misalnya: Surat Pengantar RT/RW setempat, KTP asli & fotokopi, Kartu Keluarga / KK, serta berkas pendukung relevan seperti surat pernyataan tidak mampu, foto usaha, dsb.).
+  * JANGAN PERNAH menolak dengan kaku seperti "Informasi tersebut belum tersedia di basis data resmi". Jika nama surat belum ada di daftar template database, jelaskan persyaratan umum standar desa dan arahkan langkah praktis untuk mengurusnya secara online di portal SIWARGA atau langsung ke Kantor Desa ${namaDesa}.
+===================================================================
+
+===================================================================
+3. INTEGRASI BASIS DATA (RAG) & STATUS RIWAYAT PENGGUNA:
+- Jika pengguna menanyakan status permohonan surat atau laporan aspirasi miliknya sendiri:
+  * Gunakan data riwayat aktual yang tertera di bawah.
+  * JIKA riwayat pengajuan surat atau aspirasi pengguna KOSONG, jelaskan dengan ramah dan sopan bahwa saat ini belum ada riwayat permohonan atas nama akun tersebut, lalu berikan panduan ringkas cara mengajukannya. JANGAN menolak kaku.
+- Jika pengguna menanyakan data profil desa, aparatur desa, atau struktur pengurus RT/RW, gunakan data resmi yang tersedia di bawah.
+===================================================================
+
+===================================================================
+4. BATASAN HAK AKSES ROLE: ${isAdmin ? 'MODE ADMIN (FULL ACCESS)' : 'MODE WARGA (RESTRICTED ACCESS)'}
 ${isAdmin ? `
 - Pengguna saat ini adalah Administrator Desa (${authUser.nama || 'Admin Desa'}).
 - Mode Admin memiliki akses penuh (Full Access): Bisa melihat dan mengelola seluruh data sistem desa (semua pengumuman, seluruh pengajuan surat warga, seluruh aspirasi, statistik RT/RW, dan data akun warga).
@@ -301,14 +320,14 @@ ${isAdmin ? `
 - Pengguna saat ini adalah Warga Desa (${authUser.nama || 'Warga'} - NIK: ${userNik || '-'}).
 - Warga memiliki akses terbatas HANYA untuk layanan publik dan data miliknya sendiri.
 - FITUR YANG DIIZINKAN UNTUK WARGA:
-  * Informasi Tab RT/RW (Struktur dan info kontak wilayah).
+  * Informasi Tab RT/RW (Struktur dan info kontak wilayah tempat tinggal).
   * Layanan Administrasi (Petunjuk dan pengajuan surat).
   * Pengumuman Desa (Melihat pengumuman publik desa).
   * Persetujuan & Status Surat (HANYA melihat riwayat/status surat milik akun warga yang sedang login).
   * Aspirasi Warga (HANYA melihat dan mengajukan aspirasi dari akun warga yang sedang login).
 - LARANGAN KETAT WARGA:
-  * AI DILARANG memberikan data milik warga lain (NIK, nama warga lain, pengajuan surat orang lain, atau aduan orang lain).
-  * AI DILARANG memberikan data sensitif internal desa atau total populasi penduduk desa. Arahkan warga untuk datang langsung ke Kantor Desa Mertapada Wetan jika memerlukan data kependudukan resmi.
+  * AI DILARANG memberikan data privasi milik warga lain (NIK, nama warga lain, pengajuan surat orang lain, atau aduan orang lain).
+  * AI DILARANG memberikan data sensitif internal desa atau total populasi penduduk desa (hindari mengarang/halusinasi angka). Arahkan warga untuk datang langsung ke Kantor Desa ${namaDesa} jika memerlukan data rekap kependudukan resmi.
 `}
 ===================================================================
 
@@ -345,22 +364,19 @@ ${teksAspirasi}
 PERTANYAAN PENGGUNA (${authUser.nama || 'Pengguna'} - Role: ${authUser.role || 'WARGA'}): "${message}"
 
 INSTRUKSI CARA MENJAWAB:
-1. Selalu patuhi ATURAN MUTLAK BATASAN TOPIK. Jika di luar topik desa, langsung tolak dengan: "${PENOLAKAN_RESMI}".
-2. Selalu patuhi HAK AKSES ROLE. Jika role Warga menanyakan data warga lain atau data internal desa, tolak secara sopan.
-3. Jawablah secara singkat, ramah, sopan, dan terstruktur rapi dengan format markdown.
+1. Selalu patuhi ATURAN MUTLAK BATASAN TOPIK. Jika murni di luar topik desa, langsung tolak dengan: "${PENOLAKAN_RESMI}".
+2. Selalu patuhi HAK AKSES ROLE. Jika role Warga menanyakan data warga lain atau data rahasia internal desa, tolak secara sopan.
+3. JANGAN HANYA MEMBALAS SALAM PEMBUKA. Sapa dengan ramah (misal "Sampurasun / Halo Warga"), lalu langsung jawab inti pertanyaan atau kebutuhan pengguna secara tuntas, jelas, informatif, dan solutif.
+4. Gunakan gaya bahasa yang santun, bersahabat, dan terstruktur rapi dengan poin/bullet points serta format markdown. Berikan langkah-langkah praktis dan persyaratan dokumen jika pengguna menanyakan prosedur permohonan administrasi.
 `;
 
     const candidateModels = Array.from(
       new Set([
-        preferredModel || 'gemini-3.7-flash',
-        'gemini-3.7-flash',
-        'gemini-3.8-flash',
-        'gemini-3.6-flash',
-        'gemini-3.5-flash',
-        'gemini-3.5-flash-lite',
-        'gemini-3.1-flash-lite',
+        preferredModel || 'gemini-2.5-flash',
+        'gemini-2.5-flash',
+        'gemini-2.5-flash-lite',
         'gemini-flash-latest',
-        'gemini-flash-lite-latest'
+        'gemini-2.5-pro'
       ])
     );
 
@@ -374,7 +390,11 @@ INSTRUKSI CARA MENJAWAB:
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              contents: [{ parts: [{ text: promptLengkap }] }]
+              contents: [{ parts: [{ text: promptLengkap }] }],
+              generationConfig: {
+                maxOutputTokens: 2048,
+                temperature: 0.7
+              }
             })
           }
         );
@@ -385,10 +405,12 @@ INSTRUKSI CARA MENJAWAB:
           console.log(`✅ AI Berhasil merespon menggunakan model: ${modelName}`);
           break;
         } else if (data.error) {
-          console.warn(`Model ${modelName} error (${data.error.code}): ${data.error.message}`);
+          console.error(`❌ Model ${modelName} error (${data.error.code || response.status}): ${data.error.message || JSON.stringify(data.error)}`);
+        } else {
+          console.error(`❌ Model ${modelName} respon tidak memuat text valid:`, JSON.stringify(data));
         }
       } catch (e) {
-        console.warn(`Gagal coba model ${modelName}, mencoba model selanjutnya...`);
+        console.error(`❌ Gagal coba model ${modelName}:`, e.message);
       }
     }
 
@@ -415,7 +437,7 @@ const getAiConfig = async (req, res) => {
     if (rows.length === 0) {
       return res.json({ 
         success: true, 
-        data: { api_key: '', model_default: 'gemini-2.0-flash' } 
+        data: { api_key: '', model_default: 'gemini-2.5-flash' } 
       });
     }
     res.json({ success: true, data: rows[0] });
@@ -428,7 +450,7 @@ const getAiConfig = async (req, res) => {
 const updateAiConfig = async (req, res) => {
   const { api_key, apiKey, model_default, model } = req.body;
   const finalKey = (api_key || apiKey || '').trim();
-  const finalModel = (model_default || model || 'gemini-2.0-flash').trim();
+  const finalModel = (model_default || model || 'gemini-2.5-flash').trim();
 
   try {
     const [existing] = await db.query('SELECT * FROM ai_config LIMIT 1');
