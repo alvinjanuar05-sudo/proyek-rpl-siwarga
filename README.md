@@ -33,6 +33,11 @@
 
 Sesuai ketentuan rubrik penilaian Proyek Akhir Mandiri Rekayasa Perangkat Lunak (OBE), berikut adalah tautan dokumentasi video presentasi dan demonstrasi teknis:
 
+**Tautan pada video penyelesaian project saya jadikan satu vide berikut LINK nya**
+🔗 *[https://youtu.be/0C85wFq4VPs?si=6u72QEeVCSKanfhk]*  
+
+
+
 1. **Video 1 — Analisis Kebutuhan, PRD & Perancangan Sistem (UML & ERD):**  
    🔗 *[Tautan Video 1 — Placeholder YouTube / Google Drive]*  
    *(Membahas latar belakang masalah, identifikasi 4 user persona, perancangan Use Case, Activity Diagram, Sequence Diagram, dan skema relasional 19 tabel database MySQL)*.
