@@ -1,4 +1,4 @@
-# 🏛️ SIWARGA — SVARA (Smart Village Virtual Assistant)
+# 🏛️ SIWARGA — SVARA (Smart Civic Information And Regional Assistant)
 
 **Sistem Informasi Pelayanan Administrasi Desa Terpadu & Asisten Virtual Publik Berbasis AI**  
 *Studi Kasus: Kantor Kuwu / Pemerintah Desa Mertapada Wetan, Kecamatan Astanajapura, Kabupaten Cirebon*
