@@ -33,22 +33,11 @@
 
 Sesuai ketentuan rubrik penilaian Proyek Akhir Mandiri Rekayasa Perangkat Lunak (OBE), berikut adalah tautan dokumentasi video presentasi dan demonstrasi teknis:
 
-**Tautan pada video penyelesaian project saya jadikan satu vide berikut LINK nya**
+**Tautan pada video penyelesaian project, saya jadikan satu video berikut LINKNYA :**
+
 🔗 *[https://youtu.be/0C85wFq4VPs?si=6u72QEeVCSKanfhk]*  
 
 
-
-1. **Video 1 — Analisis Kebutuhan, PRD & Perancangan Sistem (UML & ERD):**  
-   🔗 *[Tautan Video 1 — Placeholder YouTube / Google Drive]*  
-   *(Membahas latar belakang masalah, identifikasi 4 user persona, perancangan Use Case, Activity Diagram, Sequence Diagram, dan skema relasional 19 tabel database MySQL)*.
-
-2. **Video 2 — Implementasi Kode (Clean Code & SOLID), Asisten Cerdas AI & Keamanan RBAC:**  
-   🔗 *[Tautan Video 2 — Placeholder YouTube / Google Drive]*  
-   *(Membahas arsitektur Decoupled Monorepo, generator dokumen Word `.docx` otomatis, scanner kamera QR bansos dengan atomic lock, integrasi Google Gemini AI dengan RAG & domain guardrails, serta keamanan hashing bcryptjs)*.
-
-3. **Video 3 — Pengujian Sistem (Automated Unit Testing), CI/CD GitHub Actions & Live Demo End-to-End:**  
-   🔗 *[Tautan Video 3 — Placeholder YouTube / Google Drive]*  
-   *(Membahas eksekusi pengujian otomatis 55+ test cases, pipeline GitHub Actions CI/CD status passing hijau, serta simulasi alur warga mengajukan surat hingga diverifikasi dan dicairkan oleh admin desa)*.
 
 ---
 
