@@ -25,7 +25,7 @@
 | **Jenis Tugas** | Proyek Akhir Mandiri (Berbasis Rubrik OBE) |
 | **Tema Proyek** | *Smart Government & E-Village Public Service Automation* |
 | **Lokasi Studi Kasus** | Pemerintah Desa Mertapada Wetan, Kec. Astanajapura, Kab. Cirebon |
-| **Repositori GitHub** | [https://github.com/alvinjanuar05/proyek-rpl-siwarga](https://github.com/alvinjanuar05/proyek-rpl-siwarga) |
+| **Repositori GitHub** | [https://github.com/alvinjanuar05-sudo/proyek-rpl-siwarga](https://github.com/alvinjanuar05-sudo/proyek-rpl-siwarga) |
 
 ---
 
